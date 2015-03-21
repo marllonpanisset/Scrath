@@ -1,0 +1,19 @@
+// FRAMEWORK CORE
+// =============================
+// Obrigatory classes for work property
+
+// For custom class names
+// Be careful changing variable values!
+@import '_core/class'; 
+
+// Get custom colors
+// You can change the default framework main colors
+@import '_core/colors'; 
+
+// Reset default HTML
+@import '_core/reset';
+
+// Grid system
+@import '_core/_grid/grid';
+
+

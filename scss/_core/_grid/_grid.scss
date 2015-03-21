@@ -1,0 +1,71 @@
+@import 'grid-mixins';
+
+// Container display
+.#{$container-fluid}:after,
+.#{$container-fluid}:before, 
+.#{$container}:after,
+.#{$container}:before,
+.#{$row}:before, 
+.#{$row}:after {
+  display: table;
+  content: " ";
+}
+
+.#{$container}:after,
+.#{$container-fluid}:after,
+.#{$row}:after {
+  clear: both;
+}
+
+// Just a row
+.#{$row} {
+  width: auto;
+}
+
+// Responsive containers and Fluid(Full width layout)
+.#{$container-fluid}, 
+.#{$container} {
+  width: 100%;
+}
+
+// Responive mobile first columns
+@for $i from 1 through 12 {
+  .#{$col}-#{$i} {
+    @extend %grid_extend;
+  }
+}
+
+// Responsive containers(Desktop to Tablet)
+.#{$container} {
+  @include grid_mediaquery(mobile) {
+    @include container($container-width - $mobile);
+  }
+
+  @include grid_mediaquery(tablet) {
+    @include container($container-width - $tablet);
+  }
+
+  @include grid_mediaquery(desktop-tablet) {
+    @include container($container-width - $desktop-tablet);
+  }
+
+  @include grid_mediaquery(desktop) {
+    @include container($container-width - $desktop);
+  }
+}
+
+// Responsive columns(Desktop to Tablet)
+@include grid_mediaquery(mobile) {
+  @for $i from 1 through 12 {
+    .#{$col}-#{$i} {
+      @include grid_desktop_calc($i);
+    }
+  }
+  @for $o from 0 through 12 {
+    .#{$spacer}-#{$o} {
+      @include grid_desktop_offset($o);
+    }
+  }
+}
+
+

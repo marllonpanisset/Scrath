@@ -1,0 +1,61 @@
+// Variables
+// Container, Gutter and Half Gutter
+$container-width: 1140;
+$full-gutter: 30;
+$half-gutter: $full-gutter / 2;
+
+// Media Queries breakpoints
+$mobile: 600;
+$tablet: 768;
+$desktop-tablet: 1024;
+$desktop: 1170;
+
+// Grid extend
+%grid_extend {
+  width: 97.36842%;
+  float: left;
+  margin-left: percentage($half-gutter / $container-width);
+  margin-right: percentage($half-gutter / $container-width);
+}
+
+// Media Query mixin
+@mixin grid_mediaquery($device) {
+  @if $device == mobile {
+    @media (min-width: $mobile + px) { @content; }
+
+  } @else if $device == tablet {
+    @media (min-width: $tablet + px) { @content; }
+
+  } @else if $device == desktop-tablet {
+    @media (min-width: $desktop-tablet + px) { @content; }
+
+  } @else if $device == desktop {
+    @media (min-width: $desktop + px) { @content; }
+  }  
+}
+
+// Container mixin
+@mixin container($min_media) {
+  width: $container-width - $min_media + px;
+  margin: 0 auto;
+}
+
+// Desktop column calc
+@mixin grid_desktop_calc($i) {
+  @if $i == 1 {
+    width: percentage((65 * $i) / $container-width);
+  } @elseif $i == 2 {
+    width: percentage(((65 * $i) + $full-gutter) / $container-width);
+  } @else {
+    width: percentage(((65 * $i) + ($full-gutter * ($i - 1))) / $container-width);
+  }
+}
+
+// Column offset calc
+@mixin grid_desktop_offset($o) {
+  @if $o == 2 {
+    margin-left: percentage(((65 * $o) + ($full-gutter * 2) + $half-gutter) / $container-width);
+  } @else {
+    margin-left: percentage(((65 * $o) + $full-gutter + $half-gutter) / $container-width);
+  }
+}
