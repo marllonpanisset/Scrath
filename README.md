@@ -7,12 +7,12 @@
 * Webrick
 
 To install the dependencies:
-´´´bash
+```bash
 $ gem install sass webrick
-´´´
+```
 
 To build the Grid framework:
-´´´bash
+```bash
 $ ruby build.rb
-´´´
+```
 
