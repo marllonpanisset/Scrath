@@ -9,12 +9,12 @@ gulp.task('gulpSass', function() {
     .pipe(gulpSass({
       errLogToConsole: true
     }))
-    .pipe(gulp.dest('./app/css'))
+    .pipe(gulp.dest('./build'))
 });
 
 gulp.task('webserver', function() {
   connect.server({
-    root: 'app',
+    root: 'build',
     port: 3000,
     hostname: '0.0.0.0',
     livereload: false
