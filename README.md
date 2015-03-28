@@ -23,20 +23,16 @@ To build the framework:
 $ ruby build.rb
 ```
 
-## Using NodeJS
-#### Dependencies
-* Gulp
+## Settings
+The settings are placed on file: **config.yaml**. You can set the folder and the Port of the WebServer.
 
-To install dependencies:
-```bash
-$ npm install -g gulp
-```
-To build the framework
-```bash
-$ gulp
+```yaml
+settings:
+  folder: 'build'
+  serverPort: '3000'
 ```
 
 ## Webserver
-After the Webserver(webrick or Gulp server) will start watch the folder Build. There's an index.html file for tests
+After the Webserver(Webrick) will start watch the folder Build. There's an index.html file for tests
 
 To access just **localhost:8000**

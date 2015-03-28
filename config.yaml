@@ -1,0 +1,4 @@
+---
+settings: 
+  folder: 'build'
+  serverPort: '3000'

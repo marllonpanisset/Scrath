@@ -1,15 +1,21 @@
 require 'webrick'
+require 'yaml'
+
+ScrathSetting = YAML.load_file('config.yaml')
+
 include WEBrick
 
+loadFolder = ScrathSetting["settings"]["folder"]
+loadPort = ScrathSetting["settings"]["serverPort"]
 
-system('sass --watch scss:build &')
+system('sass --watch scss:'+loadFolder+' &')
 
-port = 8000
+port = loadPort
 
 puts "Scrath Development Web Server"
 puts "Starting server: http://localhost:#{port}"
 puts "---------------------------------------"
 
-server = HTTPServer.new(:Port=>8000,:DocumentRoot=>'build')
+server = HTTPServer.new(:Port=>port,:DocumentRoot=>loadFolder)
 trap("INT"){ server.shutdown }
 server.start
